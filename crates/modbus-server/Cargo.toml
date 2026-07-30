@@ -23,4 +23,7 @@ rust-embed = { workspace = true }
 mime_guess = { workspace = true }
 
 [dev-dependencies]
-tokio-modbus = { workspace = true }
+tokio = { workspace = true }
+tokio-modbus = { workspace = true, features = ["tcp-server"] }
+tokio-tungstenite = { version = "0.29", default-features = false, features = ["connect", "handshake"] }
+serde_json = { workspace = true }

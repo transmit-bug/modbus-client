@@ -542,6 +542,7 @@ dependencies = [
  "async-trait",
  "modbus-core",
  "modbus-driver-tokio",
+ "serde",
  "thiserror",
  "tokio",
  "tracing",
@@ -563,6 +564,7 @@ dependencies = [
  "thiserror",
  "tokio",
  "tokio-modbus",
+ "tokio-tungstenite",
  "tracing",
  "ts-rs",
 ]
@@ -1007,6 +1009,7 @@ dependencies = [
  "futures-util",
  "log",
  "smallvec",
+ "socket2",
  "thiserror",
  "tokio",
  "tokio-util",

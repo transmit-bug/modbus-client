@@ -34,7 +34,7 @@ struct Handle {
 }
 
 /// A public snapshot of a connection.
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, serde::Serialize)]
 pub struct ConnectionInfo {
     pub id: ConnectionId,
     pub name: String,
