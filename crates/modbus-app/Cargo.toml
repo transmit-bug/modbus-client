@@ -1,0 +1,27 @@
+[package]
+name = "modbus-app"
+description = "Binary: wires driver, engine, and server; embeds the frontend."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "modbus-client"
+path = "src/main.rs"
+
+[dependencies]
+modbus-core = { workspace = true }
+modbus-driver-tokio = { workspace = true }
+modbus-engine = { workspace = true }
+modbus-server = { workspace = true }
+tokio = { workspace = true }
+axum = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+serde = { workspace = true }
+toml = { workspace = true }
+rust-embed = { workspace = true }
+mime_guess = { workspace = true }

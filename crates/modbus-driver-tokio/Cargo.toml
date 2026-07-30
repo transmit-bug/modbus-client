@@ -1,0 +1,16 @@
+[package]
+name = "modbus-driver-tokio"
+description = "tokio-modbus implementation behind modbus-core traits."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+
+[dependencies]
+modbus-core = { workspace = true }
+tokio = { workspace = true }
+tokio-modbus = { workspace = true }
+async-trait = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }

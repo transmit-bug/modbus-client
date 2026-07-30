@@ -1,0 +1,48 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/modbus-core",
+    "crates/modbus-driver-tokio",
+    "crates/modbus-engine",
+    "crates/modbus-server",
+    "crates/modbus-app",
+]
+
+[workspace.package]
+edition = "2021"
+version = "0.1.0"
+license = "MIT OR Apache-2.0"
+rust-version = "1.80"
+repository = "https://github.com/transmit-bug/modbus-client"
+
+[workspace.dependencies]
+# internal crates
+modbus-core = { path = "crates/modbus-core" }
+modbus-driver-tokio = { path = "crates/modbus-driver-tokio" }
+modbus-engine = { path = "crates/modbus-engine" }
+modbus-server = { path = "crates/modbus-server" }
+
+# async runtime + web
+tokio = { version = "1", features = ["full"] }
+axum = { version = "0.8", features = ["ws"] }
+futures-util = { version = "0.3", default-features = false, features = ["sink", "std"] }
+
+# modbus
+tokio-modbus = { version = "0.17", default-features = false, features = ["tcp", "rtu"] }
+
+# serialization + types
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+async-trait = "0.1"
+ts-rs = { version = "12", features = ["no-serde-warnings"] }
+
+# errors + logging
+thiserror = "2"
+anyhow = "1"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# static asset embedding
+rust-embed = "8"
+mime_guess = "2"

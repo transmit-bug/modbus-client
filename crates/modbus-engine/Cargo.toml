@@ -1,0 +1,16 @@
+[package]
+name = "modbus-engine"
+description = "Connection manager, subscription engine, ring buffer, tag codec."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+
+[dependencies]
+modbus-core = { workspace = true }
+modbus-driver-tokio = { workspace = true }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }

@@ -1,0 +1,26 @@
+[package]
+name = "modbus-server"
+description = "Axum HTTP + WebSocket + JSON-RPC 2.0 dispatcher."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+repository.workspace = true
+
+[dependencies]
+modbus-core = { workspace = true }
+modbus-engine = { workspace = true }
+tokio = { workspace = true }
+axum = { workspace = true }
+futures-util = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+ts-rs = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+tracing = { workspace = true }
+rust-embed = { workspace = true }
+mime_guess = { workspace = true }
+
+[dev-dependencies]
+tokio-modbus = { workspace = true }
