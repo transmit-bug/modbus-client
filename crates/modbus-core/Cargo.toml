@@ -11,3 +11,4 @@ repository.workspace = true
 serde = { workspace = true }
 async-trait = { workspace = true }
 thiserror = { workspace = true }
+ts-rs = { workspace = true }

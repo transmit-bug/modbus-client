@@ -4,7 +4,7 @@
 //! server→client push notifications. The skeleton dispatches a handful of
 //! methods against the [`ConnectionManager`]; subscriptions/push land later.
 
-use crate::rpc;
+use crate::{protocol::CloseRequest, protocol::ReadHoldingRegistersRequest, rpc};
 use axum::{
     extract::{
         ws::{Message, WebSocket, WebSocketUpgrade},
@@ -15,9 +15,8 @@ use axum::{
     Router,
 };
 use futures_util::{SinkExt, StreamExt};
-use modbus_core::{ConnectionConfig, ConnectionId, Quantity, RegisterAddress, SlaveId};
+use modbus_core::{ConnectionConfig, ConnectionId};
 use modbus_engine::{ConnectionInfo, EngineError, SharedConnectionManager};
-use serde::Deserialize;
 use serde_json::{json, Value};
 
 /// Shared server state handed to every handler.
@@ -83,10 +82,6 @@ async fn handle_list(state: &AppState) -> RpcResult {
 }
 
 async fn handle_close(state: &AppState, params: Value) -> RpcResult {
-    #[derive(Deserialize)]
-    struct CloseRequest {
-        connection: ConnectionId,
-    }
     let req: CloseRequest = serde_json::from_value(params).map_err(invalid_params)?;
     state
         .manager
@@ -97,13 +92,6 @@ async fn handle_close(state: &AppState, params: Value) -> RpcResult {
 }
 
 async fn handle_read_holding(state: &AppState, params: Value) -> RpcResult {
-    #[derive(Deserialize)]
-    struct ReadHoldingRegistersRequest {
-        connection: ConnectionId,
-        slave: SlaveId,
-        address: RegisterAddress,
-        quantity: Quantity,
-    }
     let req: ReadHoldingRegistersRequest = serde_json::from_value(params).map_err(invalid_params)?;
     let values = state
         .manager

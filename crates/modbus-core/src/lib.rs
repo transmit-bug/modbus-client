@@ -14,7 +14,8 @@ use serde::{Deserialize, Serialize};
 
 /// Opaque identifier for a managed connection (which represents one
 /// transport — a TCP socket or a serial port — that may address many slaves).
-#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize, ts_rs::TS)]
+#[ts(export, type = "string")]
 #[serde(transparent)]
 pub struct ConnectionId(pub String);
 
@@ -26,20 +27,23 @@ impl ConnectionId {
 
 /// A Modbus slave (unit) identifier. `0` is broadcast for writes.
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize,
+    Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, ts_rs::TS,
 )]
+#[ts(export, type = "number")]
 pub struct SlaveId(pub u8);
 
 /// A 0-based Modbus register/coil address.
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize,
+    Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, ts_rs::TS,
 )]
+#[ts(export, type = "number")]
 pub struct RegisterAddress(pub u16);
 
 /// Number of registers/coils to read or write.
 #[derive(
-    Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize,
+    Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize, ts_rs::TS,
 )]
+#[ts(export, type = "number")]
 pub struct Quantity(pub u16);
 
 // ---------------------------------------------------------------------------
@@ -47,7 +51,8 @@ pub struct Quantity(pub u16);
 // ---------------------------------------------------------------------------
 
 /// Serial parity.
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, ts_rs::TS)]
+#[ts(export)]
 #[serde(rename_all = "lowercase")]
 pub enum Parity {
     None,
@@ -58,7 +63,8 @@ pub enum Parity {
 /// How a connection reaches its device(s). A connection is one transport;
 /// the slave id is chosen per request, so one transport can address many
 /// devices (TCP gateway or RS-485 bus).
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, ts_rs::TS)]
+#[ts(export)]
 #[serde(tag = "type", rename_all = "snake_case")]
 pub enum TransportConfig {
     /// Modbus TCP.
@@ -76,7 +82,8 @@ pub enum TransportConfig {
 }
 
 /// User-facing definition of a managed connection.
-#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize, ts_rs::TS)]
+#[ts(export)]
 pub struct ConnectionConfig {
     /// `None` => the server assigns an id on create.
     #[serde(default, skip_serializing_if = "Option::is_none")]

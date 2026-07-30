@@ -521,6 +521,7 @@ dependencies = [
  "async-trait",
  "serde",
  "thiserror",
+ "ts-rs",
 ]
 
 [[package]]
@@ -546,6 +547,7 @@ dependencies = [
  "thiserror",
  "tokio",
  "tracing",
+ "ts-rs",
 ]
 
 [[package]]

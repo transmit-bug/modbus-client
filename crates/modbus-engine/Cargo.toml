@@ -12,6 +12,7 @@ modbus-core = { workspace = true }
 modbus-driver-tokio = { workspace = true }
 tokio = { workspace = true }
 serde = { workspace = true }
+ts-rs = { workspace = true }
 async-trait = { workspace = true }
 thiserror = { workspace = true }
 tracing = { workspace = true }

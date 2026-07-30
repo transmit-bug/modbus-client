@@ -34,7 +34,8 @@ struct Handle {
 }
 
 /// A public snapshot of a connection.
-#[derive(Debug, Clone, serde::Serialize)]
+#[derive(Debug, Clone, serde::Serialize, ts_rs::TS)]
+#[ts(export)]
 pub struct ConnectionInfo {
     pub id: ConnectionId,
     pub name: String,
