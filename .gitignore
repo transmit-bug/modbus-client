@@ -1,0 +1,18 @@
+# Rust
+/target
+/**/*.rs.bk
+
+# Node / frontend
+/node_modules
+/frontend/node_modules
+/frontend/dist
+/dist
+
+# ts-rs generated bindings
+/bindings
+
+# Local scratch / editor
+/.scratch
+/.vscode
+/.idea
+*.log
